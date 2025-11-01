@@ -15,6 +15,15 @@ export default function Graph() {
   const [transactionData, setTransactionData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [copiedAddress, setCopiedAddress] = useState(null);
+
+  // Copy to clipboard function
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedAddress(text);
+      setTimeout(() => setCopiedAddress(null), 2000);
+    });
+  };
 
   // Fetch transaction data from API
   useEffect(() => {
@@ -110,7 +119,7 @@ export default function Graph() {
       id: txId,
       position: { x: 400, y: 50 },
       data: {
-        label: `Transaction\n${transactionData.transactionDigest.substring(0, 16)}...`,
+        label: `Transaction\n${transactionData.transactionDigest.substring(0, 12)}...`,
         type: 'transaction',
         details: transactionData
       },
@@ -118,13 +127,19 @@ export default function Graph() {
         background: 'linear-gradient(135deg, #3DB3FC 0%, #5C80FA 50%, #936BF9 100%)',
         color: '#ffffff',
         borderRadius: '20px',
-        padding: '20px 28px',
+        padding: '18px 24px',
         border: '1px solid rgba(255, 255, 255, 0.3)',
         boxShadow: '0 12px 40px rgba(61, 179, 252, 0.4), 0 0 20px rgba(93, 128, 250, 0.2)',
         fontWeight: '700',
-        fontSize: '14px',
-        minWidth: '180px',
-        textAlign: 'center'
+        fontSize: '13px',
+        width: '200px',
+        textAlign: 'center',
+        wordBreak: 'break-word',
+        whiteSpace: 'pre-wrap',
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }
     });
 
@@ -149,14 +164,20 @@ export default function Graph() {
           background: 'rgba(255, 255, 255, 0.08)',
           color: '#ffffff',
           borderRadius: '20px',
-          padding: '20px 28px',
+          padding: '18px 24px',
           border: '2px solid #4da2ff',
           backdropFilter: 'blur(16px)',
           boxShadow: '0 8px 32px rgba(77, 162, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
           fontWeight: '600',
-          fontSize: '13px',
-          minWidth: '160px',
-          textAlign: 'center'
+          fontSize: '12px',
+          width: '180px',
+          textAlign: 'center',
+          wordBreak: 'break-word',
+          whiteSpace: 'pre-wrap',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }
       });
 
@@ -169,6 +190,12 @@ export default function Graph() {
         animated: true,
         label: `${(parseFloat(sendAmount.replace(/,/g, '')) / 1000000000).toFixed(4)} SUI`,
         style: { stroke: '#4da2ff', strokeWidth: 3 },
+        markerEnd: {
+          type: 'arrowclosed',
+          color: '#4da2ff',
+          width: 8,
+          height: 8
+        },
         labelStyle: {
           fill: '#4da2ff',
           fontWeight: 600,
@@ -202,14 +229,20 @@ export default function Graph() {
           background: 'rgba(255, 255, 255, 0.08)',
           color: '#ffffff',
           borderRadius: '20px',
-          padding: '20px 28px',
+          padding: '18px 24px',
           border: '2px solid #4da2ff',
           backdropFilter: 'blur(16px)',
           boxShadow: '0 8px 32px rgba(77, 162, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
           fontWeight: '600',
-          fontSize: '13px',
-          minWidth: '160px',
-          textAlign: 'center'
+          fontSize: '12px',
+          width: '180px',
+          textAlign: 'center',
+          wordBreak: 'break-word',
+          whiteSpace: 'pre-wrap',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }
       });
 
@@ -222,6 +255,12 @@ export default function Graph() {
         animated: true,
         label: `${(parseFloat(receiveAmount.replace(/,/g, '')) / 1000000000).toFixed(4)} SUI`,
         style: { stroke: '#936BF9', strokeWidth: 3 },
+        markerEnd: {
+          type: 'arrowclosed',
+          color: '#936BF9',
+          width: 8,
+          height: 8
+        },
         labelStyle: {
           fill: '#936BF9',
           fontWeight: 600,
@@ -254,14 +293,20 @@ export default function Graph() {
           background: 'rgba(147, 107, 249, 0.15)',
           color: '#ffffff',
           borderRadius: '20px',
-          padding: '20px 28px',
+          padding: '18px 24px',
           border: '2px solid #936BF9',
           backdropFilter: 'blur(16px)',
           boxShadow: '0 8px 32px rgba(147, 107, 249, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
           fontWeight: '600',
-          fontSize: '13px',
-          minWidth: '160px',
-          textAlign: 'center'
+          fontSize: '12px',
+          width: '200px',
+          textAlign: 'center',
+          wordBreak: 'break-word',
+          whiteSpace: 'pre-wrap',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }
       });
 
@@ -273,6 +318,18 @@ export default function Graph() {
         animated: true,
         label: 'Contract Call',
         style: { stroke: '#5C80FA', strokeWidth: 2, strokeDasharray: '5,5' },
+        markerStart: {
+          type: 'arrowclosed',
+          color: '#5C80FA',
+          width: 8,
+          height: 8
+        },
+        markerEnd: {
+          type: 'arrowclosed',
+          color: '#5C80FA',
+          width: 8,
+          height: 8
+        },
         labelStyle: {
           fill: '#5C80FA',
           fontWeight: 600,
@@ -425,6 +482,12 @@ export default function Graph() {
           animated: true,
           label: '100 SUI',
           style: { stroke: '#4da2ff', strokeWidth: 3 },
+          markerEnd: {
+            type: 'arrowclosed',
+            color: '#4da2ff',
+            width: 8,
+            height: 8
+          },
           labelStyle: {
             fill: '#4da2ff',
             fontWeight: 600,
@@ -445,6 +508,12 @@ export default function Graph() {
           animated: true,
           label: '99.5 SUI',
           style: { stroke: '#936BF9', strokeWidth: 3 },
+          markerEnd: {
+            type: 'arrowclosed',
+            color: '#936BF9',
+            width: 8,
+            height: 8
+          },
           labelStyle: {
             fill: '#936BF9',
             fontWeight: 600,
@@ -462,6 +531,18 @@ export default function Graph() {
           animated: true,
           label: 'Contract Call',
           style: { stroke: '#5C80FA', strokeWidth: 2, strokeDasharray: '5,5' },
+          markerStart: {
+            type: 'arrowclosed',
+            color: '#5C80FA',
+            width: 8,
+            height: 8
+          },
+          markerEnd: {
+            type: 'arrowclosed',
+            color: '#5C80FA',
+            width: 8,
+            height: 8
+          },
           labelStyle: {
             fill: '#5C80FA',
             fontWeight: 600,
@@ -666,25 +747,46 @@ export default function Graph() {
                 {selectedNode.data.details.summary && (
                   <div className="bg-white/5 rounded-lg p-3 border border-white/10">
                     <div className="text-white/50 text-xs mb-1">Summary</div>
-                    <div className="text-white text-sm">{selectedNode.data.details.summary}</div>
+                    <div className="text-white text-sm break-words whitespace-pre-wrap">{selectedNode.data.details.summary}</div>
                   </div>
                 )}
 
                 {selectedNode.data.details.explainer && (
                   <div className="bg-white/5 rounded-lg p-3 border border-white/10">
                     <div className="text-white/50 text-xs mb-1">Explainer</div>
-                    <div className="text-white text-sm">{selectedNode.data.details.explainer}</div>
+                    <div className="text-white text-sm break-words whitespace-pre-wrap">{selectedNode.data.details.explainer}</div>
                   </div>
                 )}
 
                 {selectedNode.data.details['ai-explainer'] && (
-                  <div className="bg-gradient-to-r from-[#3DB3FC]/10 to-[#936BF9]/10 rounded-lg p-3 border border-sui-blue/30">
-                    <div className="text-sui-blue text-xs mb-1 font-semibold">✨ AI Explanation</div>
-                    <div className="text-white text-sm">{selectedNode.data.details['ai-explainer']}</div>
+                  <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                    <div className="text-white/50 text-xs mb-1">✨ AI Explanation</div>
+                    <div className="text-white text-sm break-words whitespace-pre-wrap">{selectedNode.data.details['ai-explainer']}</div>
                   </div>
                 )}
 
                 <div className="space-y-2">
+                  <div className="detail-item">
+                    <span className="detail-label">Digest:</span>
+                    <div className="flex items-center gap-2 flex-1 justify-end">
+                      <span className="detail-value font-mono text-xs break-all">{selectedNode.data.details.transactionDigest}</span>
+                      <button
+                        onClick={() => copyToClipboard(selectedNode.data.details.transactionDigest)}
+                        className="flex-shrink-0 p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+                        title="Copy transaction digest"
+                      >
+                        {copiedAddress === selectedNode.data.details.transactionDigest ? (
+                          <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-4 h-4 text-white/50 hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
+                  </div>
                   <div className="detail-item">
                     <span className="detail-label">Status:</span>
                     <span className={`detail-value font-bold ${selectedNode.data.details.status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
@@ -748,7 +850,24 @@ export default function Graph() {
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">Address:</span>
-                  <span className="detail-value font-mono text-xs break-all">{selectedNode.data.details.address}</span>
+                  <div className="flex items-center gap-2 flex-1 justify-end">
+                    <span className="detail-value font-mono text-xs break-all">{selectedNode.data.details.address}</span>
+                    <button
+                      onClick={() => copyToClipboard(selectedNode.data.details.address)}
+                      className="flex-shrink-0 p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+                      title="Copy address"
+                    >
+                      {copiedAddress === selectedNode.data.details.address ? (
+                        <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4 text-white/50 hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
                 </div>
                 {selectedNode.data.details.balanceChange && (
                   <div className="detail-item">
@@ -769,7 +888,24 @@ export default function Graph() {
               <div className="space-y-3">
                 <div className="detail-item">
                   <span className="detail-label">Package:</span>
-                  <span className="detail-value font-mono text-xs">{selectedNode.data.details.package}</span>
+                  <div className="flex items-center gap-2 flex-1 justify-end">
+                    <span className="detail-value font-mono text-xs break-all">{selectedNode.data.details.package}</span>
+                    <button
+                      onClick={() => copyToClipboard(selectedNode.data.details.package)}
+                      className="flex-shrink-0 p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+                      title="Copy package address"
+                    >
+                      {copiedAddress === selectedNode.data.details.package ? (
+                        <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4 text-white/50 hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">Module:</span>
