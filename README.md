@@ -1,4 +1,4 @@
-# Suivle – Visual Transaction Explorer ![Suivle Logo](./public/suiflow-logo.svg)
+# Suivle – Visual Transaction Explorer
 
 <div align="center">
 

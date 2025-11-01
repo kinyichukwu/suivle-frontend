@@ -4,7 +4,7 @@ import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, Background, Con
 import '@xyflow/react/dist/style.css';
 import './Graph.css';
 
-const API_BASE_URL = 'https://suiflow-servers.fly.dev';
+const API_BASE_URL = 'https://suivle-servers.fly.dev';
 
 export default function Graph() {
   const params = useParams();
@@ -21,6 +21,8 @@ export default function Graph() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [copiedAddress, setCopiedAddress] = useState(null);
+  const [suiPrice, setSuiPrice] = useState(null);
+  const [priceLoading, setPriceLoading] = useState(true);
 
   // Copy to clipboard function
   const copyToClipboard = (text) => {
@@ -28,6 +30,20 @@ export default function Graph() {
       setCopiedAddress(text);
       setTimeout(() => setCopiedAddress(null), 2000);
     });
+  };
+
+  // Fetch SUI price from CoinGecko API
+  const fetchSuiPrice = async () => {
+    try {
+      setPriceLoading(true);
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=sui&vs_currencies=usd');
+      const data = await response.json();
+      setSuiPrice(data.sui.usd);
+    } catch (error) {
+      console.error('Error fetching SUI price:', error);
+    } finally {
+      setPriceLoading(false);
+    }
   };
 
   // Fetch transaction data from API
@@ -111,6 +127,13 @@ export default function Graph() {
     }
   }, [txHash, network]);
 
+  // Fetch SUI price on mount and refresh every 60 seconds
+  useEffect(() => {
+    fetchSuiPrice();
+    const interval = setInterval(fetchSuiPrice, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Generate graph nodes and edges from transaction data
   useEffect(() => {
     if (!transactionData) return;
@@ -127,7 +150,7 @@ export default function Graph() {
       id: txId,
       position: { x: 400, y: 50 },
       data: {
-        label: `Transaction\n${transactionData.transactionDigest.substring(0, 12)}...`,
+        label: `Transaction\n${transactionData.transactionDigest.substring(0, 12)}...\n${suiPrice ? `SUI: $${suiPrice.toFixed(2)}` : priceLoading ? 'Loading price...' : 'Price unavailable'}`,
         type: 'transaction',
         details: transactionData
       },
@@ -196,7 +219,7 @@ export default function Graph() {
         source: senderId,
         target: txId,
         animated: true,
-        label: `${(parseFloat(sendAmount.replace(/,/g, '')) / 1000000000).toFixed(4)} SUI`,
+        label: `${(parseFloat(sendAmount.replace(/,/g, '')) / 1000000000).toFixed(4)} SUI\n${suiPrice ? '$' + ((parseFloat(sendAmount.replace(/,/g, '')) / 1000000000) * suiPrice).toFixed(2) : ''}`,
         style: { stroke: '#4da2ff', strokeWidth: 3 },
         markerEnd: {
           type: 'arrowclosed',
@@ -210,8 +233,10 @@ export default function Graph() {
           fontSize: 12
         },
         labelBgStyle: {
-          fill: 'rgba(77, 162, 255, 0.1)',
-          fillOpacity: 0.9
+          fill: 'rgba(77, 162, 255, 0.15)',
+          fillOpacity: 0.9,
+          rx: 4,
+          ry: 4
         }
       });
     }
@@ -261,7 +286,7 @@ export default function Graph() {
         source: txId,
         target: recipientId,
         animated: true,
-        label: `${(parseFloat(receiveAmount.replace(/,/g, '')) / 1000000000).toFixed(4)} SUI`,
+        label: `${(parseFloat(receiveAmount.replace(/,/g, '')) / 1000000000).toFixed(4)} SUI\n${suiPrice ? '$' + ((parseFloat(receiveAmount.replace(/,/g, '')) / 1000000000) * suiPrice).toFixed(2) : ''}`,
         style: { stroke: '#936BF9', strokeWidth: 3 },
         markerEnd: {
           type: 'arrowclosed',
@@ -275,8 +300,10 @@ export default function Graph() {
           fontSize: 12
         },
         labelBgStyle: {
-          fill: 'rgba(147, 107, 249, 0.1)',
-          fillOpacity: 0.9
+          fill: 'rgba(147, 107, 249, 0.15)',
+          fillOpacity: 0.9,
+          rx: 4,
+          ry: 4
         }
       });
     });
