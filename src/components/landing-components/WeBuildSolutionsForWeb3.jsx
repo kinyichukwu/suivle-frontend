@@ -1,4 +1,5 @@
 import Transition from "../transitions";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import worlddextop from "../../../assets/landing-page/WeBuildSolutionsForWeb3/WorldDextop.png";
 import worldTablet from "../../../assets/landing-page/WeBuildSolutionsForWeb3/World.svg";
@@ -6,6 +7,20 @@ import imageGroup from "../../../assets/landing-page/WeBuildSolutionsForWeb3/gro
 
 const WeBuildSolutionsForWeb3 = () => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [txHash, setTxHash] = useState("");
+  const [network, setNetwork] = useState("mainnet");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (txHash.trim()) {
+      navigate(`/graph/${network}/${txHash.trim()}`);
+      setShowModal(false);
+    } else {
+      navigate(`/graph/${network}/demo`);
+      setShowModal(false);
+    }
+  };
 
   return (
     <Transition>
@@ -33,15 +48,15 @@ const WeBuildSolutionsForWeb3 = () => {
 
           <div className="flex flex-col w-full gap-10">
             <p className="font-thin lg:text-[1.25rem]">
-              Swiflow is dedicated to helping users understand Sui blockchain
+              Suivle is dedicated to helping users understand Sui blockchain
               transactions through interactive graph visualizations and advanced
               analytics. We bridge the gap between complex blockchain data and
               user-friendly insights.
             </p>
 
             <button
-              onClick={() => navigate('/graph/demo')}
-              className={`bg-white shadow-lg rounded-full px-4 lg:px-6 py-2 flex justify-center
+              onClick={() => setShowModal(true)}
+              className={`bg-white cursor-pointer shadow-lg rounded-full px-4 lg:px-6 py-2 flex justify-center
               items-center gap-2 w-fit transition-all z-10 hover:scale-105`}
             >
               <div
@@ -58,6 +73,85 @@ const WeBuildSolutionsForWeb3 = () => {
             </button>
           </div>
         </div>
+
+        {/* Search Modal */}
+        {showModal && (
+          <>
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
+              onClick={() => setShowModal(false)}
+            />
+
+            {/* Modal */}
+            <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[201] w-[90vw] max-w-2xl">
+              <div className="bg-[#011829]/95 backdrop-blur-xl p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/20">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="absolute top-4 right-4 text-white/50 hover:text-white text-3xl leading-none transition-colors"
+                >
+                  ×
+                </button>
+
+                <h2 className="text-white text-2xl sm:text-3xl font-bold mb-3 text-center">
+                  Visualize Transaction
+                </h2>
+                <p className="text-white/70 text-sm sm:text-base mb-6 text-center">
+                  Select network and enter transaction hash
+                </p>
+
+                <form onSubmit={handleSearch}>
+                  <div className="flex flex-col gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <select
+                        value={network}
+                        onChange={(e) => setNetwork(e.target.value)}
+                        className="px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base cursor-pointer appearance-none bg-no-repeat bg-right pr-10"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.5)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                          backgroundSize: '1.5rem',
+                          backgroundPosition: 'right 0.75rem center',
+                          minWidth: '140px'
+                        }}
+                      >
+                        <option value="mainnet" className="bg-[#011829] text-white">Mainnet</option>
+                        <option value="testnet" className="bg-[#011829] text-white">Testnet</option>
+                        <option value="devnet" className="bg-[#011829] text-white">Devnet</option>
+                      </select>
+                      <input
+                        type="text"
+                        value={txHash}
+                        onChange={(e) => setTxHash(e.target.value)}
+                        placeholder="Enter transaction hash..."
+                        className="flex-1 px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                    >
+                      Visualize
+                    </button>
+                  </div>
+
+                  <p className="text-white/50 text-xs sm:text-sm text-center mt-4">
+                    Or{" "}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        navigate(`/graph/${network}/demo`);
+                        setShowModal(false);
+                      }}
+                      className="text-sui-blue hover:text-sui-blue-dark underline transition-colors"
+                    >
+                      try a demo transaction
+                    </button>
+                  </p>
+                </form>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </Transition>
   );

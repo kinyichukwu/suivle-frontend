@@ -13,10 +13,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
+  padding: 1.5rem 3rem;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 10;
   flex-shrink: 0;
 }
@@ -24,19 +23,19 @@
 /* Content Container */
 .docs-content {
   flex: 1;
-  max-width: 1400px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 5rem 3rem;
   z-index: 5;
   position: relative;
 }
 
 /* Markdown Styling */
 .markdown-body {
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.8;
-  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.75;
+  font-size: 1.0625rem;
 }
 
 /* Headings */
@@ -45,12 +44,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 3.5rem;
+  font-size: 3.75rem;
   font-weight: 800;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-align: center;
 }
 
 .markdown-body h1:first-child {
@@ -58,26 +58,33 @@
 }
 
 .markdown-body h2 {
-  color: #3DB3FC;
-  font-size: 2.5rem;
+  color: white;
+  font-size: 2.25rem;
   font-weight: 700;
-  margin-top: 4rem;
+  margin-top: 5rem;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   line-height: 1.2;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-body h2:first-of-type {
+  margin-top: 3rem;
 }
 
 .markdown-body h3 {
-  color: #5C80FA;
-  font-size: 1.75rem;
+  color: #4da2ff;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   margin-bottom: 1rem;
+  letter-spacing: -0.01em;
 }
 
 .markdown-body h4 {
   color: rgba(255, 255, 255, 0.95);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
@@ -85,8 +92,8 @@
 
 .markdown-body h5,
 .markdown-body h6 {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -95,56 +102,48 @@
 /* Paragraphs */
 .markdown-body p {
   margin-bottom: 1.5rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.0625rem;
+  line-height: 1.75;
 }
 
 /* Links */
 .markdown-body a {
-  color: #3DB3FC;
+  color: #4da2ff;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
-  position: relative;
+  border-bottom: 1px solid rgba(77, 162, 255, 0.3);
 }
 
 .markdown-body a:hover {
   color: #5C80FA;
-}
-
-.markdown-body a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #3DB3FC, #5C80FA);
-  transition: width 0.3s ease;
-}
-
-.markdown-body a:hover::after {
-  width: 100%;
+  border-bottom-color: #5C80FA;
 }
 
 /* Lists */
 .markdown-body ul,
 .markdown-body ol {
-  margin-bottom: 1.25rem;
-  padding-left: 2rem;
-  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.5rem;
+  padding-left: 1.75rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .markdown-body li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.625rem;
+  line-height: 1.75;
+}
+
+.markdown-body li::marker {
+  color: #4da2ff;
 }
 
 .markdown-body ul ul,
 .markdown-body ol ol,
 .markdown-body ul ol,
 .markdown-body ol ul {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
 }
 
 /* Code */

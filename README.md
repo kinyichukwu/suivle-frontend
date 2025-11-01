@@ -1,8 +1,8 @@
-# SuiFlow – Visual Transaction Explorer (Frontend)
+# Suivle – Visual Transaction Explorer ![Suivle Logo](./public/suiflow-logo.svg)
 
 <div align="center">
 
-![SuiFlow Logo](./public/vite.svg)
+
 
 **An AI-powered blockchain explorer designed to humanize Sui transactions through beautiful visualizations**
 
@@ -12,9 +12,9 @@
 
 ## 📋 About
 
-SuiFlow is an intelligent visual transaction explorer that connects directly with the Sui blockchain to fetch, parse, and humanize transaction data. This frontend application provides a clean and interactive UI to visualize on-chain activity on the Sui network, converting raw blockchain responses into readable visual summaries — including participants, amounts, transaction digests, and gas analytics — rendered using React Flow components.
+Suivle is an intelligent visual transaction explorer that connects directly with the Sui blockchain to fetch, parse, and humanize transaction data. This frontend application provides a clean and interactive UI to visualize on-chain activity on the Sui network, converting raw blockchain responses into readable visual summaries — including participants, amounts, transaction digests, and gas analytics — rendered using React Flow components.
 
-This project is part of the **Sui Grants Program** application under the "AI-Enhanced Blockchain Insights" category. The frontend visualization is developed by **@Kins** and integrates seamlessly with the [SuiFlow Backend API](https://github.com/MayowaJulius/suiflow-backend) built by **@MayowaJulius**.
+This project is part of the **Sui Grants Program** application under the "AI-Enhanced Blockchain Insights" category. The frontend visualization is developed by [**@Kin**](https://github.com/kinyichukwu) and integrates seamlessly with the [Suivle Backend API](https://github.com/MayowaJulius/suiflow-backend) built by [**@MayowaJulius**](https://github.com/MayowaJulius).
 
 
 
@@ -31,7 +31,7 @@ This project is part of the **Sui Grants Program** application under the "AI-Enh
 
 ## 🧠 Example Output
 
-When a transaction is visualized, SuiFlow displays:
+When a transaction is visualized, Suivle displays:
 
 ```
 Sender (0x4aa0d92f...9072) → 0.2 SUI → Recipient (0xb6a150da...2511)
@@ -60,7 +60,7 @@ The backend API provides structured JSON responses:
 
 ### Planned Integrations
 
-- **Backend**: Node.js (Express + TypeScript) - [SuiFlow Backend](https://github.com/phenzic/suiflow-backend)
+- **Backend**: Node.js (Express + TypeScript) - [Suivle Backend](https://github.com/phenzic/suiflow-backend)
 - **Blockchain SDK**: Sui.js for direct blockchain interaction
 - **AI Engine**: LLM-based natural language summarization (upcoming)
 
@@ -77,8 +77,8 @@ The backend API provides structured JSON responses:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/suiflow-frontend.git
-cd suiflow-frontend
+git clone https://github.com/kinyichukwu/suivle-frontend.git
+cd suivle-frontend
 ```
 
 2. Install dependencies:
@@ -120,7 +120,7 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-suiflow-frontend/
+suivle-frontend/
 ├── public/
 │   └── vite.svg              # Static assets
 ├── src/
@@ -193,8 +193,8 @@ App (Container)
 - ✅ Interactive canvas with controls and minimap
 
 
-- **Frontend Repository**: [suiflow-frontend](https://github.com/kinyichukwu/swiflow-frontend)
-- **Backend Repository**: [suiflow-backend](https://github.com/Phenzic/suiflow-server)
+- **Frontend Repository**: [suivle-frontend](https://github.com/kinyichukwu/suivle-frontend)
+- **Backend Repository**: [suivle-backend](https://github.com/Phenzic/suiflow-server)
 - **Sui Blockchain**: [sui.io](https://sui.io)
 
 <div align="center">

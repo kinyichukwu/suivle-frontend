@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import './Docs.css';
 
-const GITHUB_README_URL = 'https://raw.githubusercontent.com/kinyichukwu/swiflow-frontend/main/README.md';
+const GITHUB_README_URL = 'https://raw.githubusercontent.com/kinyichukwu/suivle-frontend/main/README.md';
 
 export default function Docs() {
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ export default function Docs() {
           <h1 className="text-white text-xl font-bold">Documentation</h1>
         </div>
         <a
-          href="https://github.com/kinyichukwu/swiflow-frontend"
+          href="https://github.com/kinyichukwu/suivle-frontend"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/15 transition-all text-sm flex items-center gap-2"

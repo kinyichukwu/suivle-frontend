@@ -33,7 +33,7 @@ export const OurTeam = () => {
         </h2>
 
         <p className="text-white/60 max-w-2xl text-base md:text-lg mb-6">
-          Meet the talented individuals behind SuiFlow, dedicated to building the future of blockchain visualization.
+          Meet the talented individuals behind Suivle, dedicated to building the future of blockchain visualization.
         </p>
 
         <section className="flex gap-10 lg:gap-14 flex-wrap w-full max-w-5xl justify-center items-center mt-10">

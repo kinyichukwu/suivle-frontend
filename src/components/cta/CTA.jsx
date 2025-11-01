@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const CTA = ({
-  text = `SuiFlow. ${new Date().getFullYear()}. All rights reserved`,
+  text = `Suivle. ${new Date().getFullYear()}. All rights reserved`,
 }) => {
   return (
     <footer className="bg-sui-bg border-t border-white/30 mt-20">
@@ -15,12 +15,12 @@ export const CTA = ({
             <div className="flex items-center gap-3">
               <img
                 src="/suiflow-logo.svg"
-                alt="SuiFlow"
+                alt="Suivle"
                 className="h-8 w-auto"
               />
               <div className="text-2xl font-bold">
-                <span className="text-sui-blue">Sui</span>
-                <span className="text-white">Flow</span>
+                <span className="text-sui-blue">Suiv</span>
+                <span className="text-white">le</span>
               </div>
             </div>
             <p className="text-white/60 text-sm">
@@ -47,7 +47,7 @@ export const CTA = ({
             <h3 className="text-white font-semibold mb-2">Connect</h3>
             <div className="flex gap-4">
               <a
-                href="https://twitter.com/suiflow"
+                href="https://twitter.com/suivle"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/60 hover:text-sui-blue transition-colors"
@@ -55,7 +55,7 @@ export const CTA = ({
                 <FaXTwitter className="text-xl" />
               </a>
               <a
-                href="https://t.me/suiflow"
+                href="https://t.me/suivle"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/60 hover:text-sui-blue transition-colors"
@@ -63,7 +63,7 @@ export const CTA = ({
                 <FaTelegramPlane className="text-xl" />
               </a>
               <a
-                href="https://github.com/suiflow"
+                href="https://github.com/kinyichukwu/suivle-frontend"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/60 hover:text-sui-blue transition-colors"
