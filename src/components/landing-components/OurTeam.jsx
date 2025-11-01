@@ -3,20 +3,16 @@ import LandingDarkButton from '../buttons/LandingDarkButton';
 
 const teamMembers = [
   {
-    name: 'Team Lead',
-    role: 'Product & Strategy',
-    image: null,
+    name: 'Mayowa Ogungbola',
+    role: 'Software & Devrel Engineer',
+    link: "https://www.linkedin.com/in/mayowa-ogungbola-a71810229/",
   },
   {
-    name: 'Lead Engineer',
-    role: 'Blockchain Engineer',
-    image: null,
-  },
-  {
-    name: 'Designer',
-    role: 'Visual Design',
-    image: null,
-  },
+    name: 'Kinyichukwu Oselukwue',
+    role: 'AI & Software Engineer',
+    image: "",
+    link: "https://www.linkedin.com/in/kinyichukwu-oselukwue-69a49622b/",
+  }
 ];
 
 export const OurTeam = () => {
@@ -47,6 +43,7 @@ export const OurTeam = () => {
               name={member.name}
               role={member.role}
               image={member.image}
+              link={member.link}
             />
           ))}
         </section>

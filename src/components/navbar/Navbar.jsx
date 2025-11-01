@@ -57,14 +57,9 @@ export const Navbar = () => {
             <Link to="/" className="hover:text-sui-blue transition-colors">
               Home
             </Link>
-            <a
-              href="https://docs.sui.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-sui-blue transition-colors"
-            >
+            <Link to="/docs" className="hover:text-sui-blue transition-colors">
               Docs
-            </a>
+            </Link>
             <GradientButton
               text="View Demo"
               isIcon={false}
@@ -127,14 +122,13 @@ export const Navbar = () => {
               >
                 Demo
               </Link>
-              <a
-                href="https://docs.sui.io"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/docs"
+                onClick={() => setMenuOpen(false)}
                 className="text-white hover:text-sui-blue transition-colors py-4 text-lg font-medium border-b border-white/10 hover:border-sui-blue/30"
               >
                 Documentation
-              </a>
+              </Link>
             </div>
 
             {/* CTA Button */}

@@ -1,6 +1,7 @@
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const CTA = ({
   text = `SuiFlow. ${new Date().getFullYear()}. All rights reserved`,
@@ -30,15 +31,15 @@ export const CTA = ({
           {/* Quick Links */}
           <div className="flex flex-col gap-3">
             <h3 className="text-white font-semibold mb-2">Quick Links</h3>
-            <a href="/" className="text-white/60 hover:text-sui-blue transition-colors text-sm">
+            <Link to="/" className="text-white/60 hover:text-sui-blue transition-colors text-sm">
               Home
-            </a>
-            <a href="/graph/demo" className="text-white/60 hover:text-sui-blue transition-colors text-sm">
+            </Link>
+            <Link to="/graph/demo" className="text-white/60 hover:text-sui-blue transition-colors text-sm">
               Demo
-            </a>
-            <a href="https://docs.sui.io" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-sui-blue transition-colors text-sm">
+            </Link>
+            <Link to="/docs" className="text-white/60 hover:text-sui-blue transition-colors text-sm">
               Documentation
-            </a>
+            </Link>
           </div>
 
           {/* Social */}
