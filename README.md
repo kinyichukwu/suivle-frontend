@@ -120,7 +120,7 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-swiflow-frontend/
+suiflow-frontend/
 ├── public/
 │   └── vite.svg              # Static assets
 ├── src/

@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 
 export const CTA = ({
-  text = `SwiFlow. ${new Date().getFullYear()}. All rights reserved`,
+  text = `SuiFlow. ${new Date().getFullYear()}. All rights reserved`,
 }) => {
   return (
     <footer className="bg-sui-bg border-t border-white/30 mt-20">
@@ -14,11 +14,11 @@ export const CTA = ({
             <div className="flex items-center gap-3">
               <img
                 src="/suiflow-logo.svg"
-                alt="SwiFlow"
+                alt="SuiFlow"
                 className="h-8 w-auto"
               />
               <div className="text-2xl font-bold">
-                <span className="text-sui-blue">Swi</span>
+                <span className="text-sui-blue">Sui</span>
                 <span className="text-white">Flow</span>
               </div>
             </div>

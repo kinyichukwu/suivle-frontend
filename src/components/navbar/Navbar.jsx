@@ -43,7 +43,7 @@ export const Navbar = () => {
           <Link to="/" className="flex items-center gap-3">
             <img
               src="/suiflow-logo.svg"
-              alt="SwiFlow"
+              alt="SuiFlow"
               className="h-8 md:h-10 w-auto"
             />
             <div className="text-xl md:text-2xl font-bold tracking-tight">

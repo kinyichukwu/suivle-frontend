@@ -202,6 +202,7 @@
   right: 1.5rem;
   width: 340px;
   max-width: calc(100vw - 3rem);
+  max-height: calc(100vh - 3rem);
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -210,6 +211,50 @@
   z-index: 100;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
   animation: slideInRight 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.node-details-panel > .flex:first-child {
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
+.node-details-panel > .space-y-4,
+.node-details-panel > .space-y-3 {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.5rem;
+  margin-right: -0.5rem;
+}
+
+.node-details-panel > .space-y-4::-webkit-scrollbar,
+.node-details-panel > .space-y-3::-webkit-scrollbar {
+  width: 6px;
+}
+
+.node-details-panel > .space-y-4::-webkit-scrollbar-track,
+.node-details-panel > .space-y-3::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.node-details-panel > .space-y-4::-webkit-scrollbar-thumb,
+.node-details-panel > .space-y-3::-webkit-scrollbar-thumb {
+  background: rgba(77, 162, 255, 0.4);
+  border-radius: 3px;
+}
+
+.node-details-panel > .space-y-4::-webkit-scrollbar-thumb:hover,
+.node-details-panel > .space-y-3::-webkit-scrollbar-thumb:hover {
+  background: rgba(77, 162, 255, 0.6);
+}
+
+.node-details-panel > button:last-child {
+  flex-shrink: 0;
+  margin-top: 1rem;
 }
 
 @keyframes slideInRight {

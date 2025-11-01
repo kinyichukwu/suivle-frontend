@@ -36,7 +36,7 @@ const Hero = () => {
           </div>
         </h1>
         <p className="text-center pt-6 pb-8 sm:pt-6 text-base lg:text-lg z-10 text-white/70 max-w-3xl">
-          <span className="text-white">SwiFlow</span> is dedicated to helping users understand <span className="text-sui-blue">Sui blockchain transactions</span> through interactive <span className="text-white">graph visualizations</span> and analytics
+          <span className="text-white">SuiFlow</span> is dedicated to helping users understand <span className="text-sui-blue">Sui blockchain transactions</span> through interactive <span className="text-white">graph visualizations</span> and analytics
         </p>
 
         <form onSubmit={handleSearch} className="w-full max-w-2xl px-4">
