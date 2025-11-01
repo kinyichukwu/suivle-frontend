@@ -57,9 +57,6 @@ export const Navbar = () => {
             <Link to="/" className="hover:text-sui-blue transition-colors">
               Home
             </Link>
-            <Link to="/graph/demo" className="hover:text-sui-blue transition-colors">
-              Demo
-            </Link>
             <a
               href="https://docs.sui.io"
               target="_blank"
@@ -69,9 +66,9 @@ export const Navbar = () => {
               Docs
             </a>
             <GradientButton
-              text="Get Started"
+              text="View Demo"
               isIcon={false}
-              className="text-sm py-3 px-6"
+              className="text-sm py-3 px-6 cursor-pointer"
               onClick={() => window.location.href = '/graph/demo'}
             />
           </div>

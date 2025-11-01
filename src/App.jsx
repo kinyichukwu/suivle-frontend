@@ -8,6 +8,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/graph/:network/:txHash" element={<Graph />} />
         <Route path="/graph/:txHash" element={<Graph />} />
       </Routes>
     </BrowserRouter>

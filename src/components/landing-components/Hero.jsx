@@ -6,13 +6,14 @@ import zigzag2 from "../../../assets/landing-page/Zigzag2.png";
 const Hero = () => {
   const navigate = useNavigate();
   const [txHash, setTxHash] = useState("");
+  const [network, setNetwork] = useState("mainnet");
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (txHash.trim()) {
-      navigate(`/graph/${txHash.trim()}`);
+      navigate(`/graph/${network}/${txHash.trim()}`);
     } else {
-      navigate('/graph/demo');
+      navigate(`/graph/${network}/demo`);
     }
   };
 
@@ -40,17 +41,34 @@ const Hero = () => {
         </p>
 
         <form onSubmit={handleSearch} className="w-full max-w-2xl px-4">
-          <div className="flex flex-col sm:flex-row gap-3 items-center">
-            <input
-              type="text"
-              value={txHash}
-              onChange={(e) => setTxHash(e.target.value)}
-              placeholder="Enter transaction hash to visualize..."
-              className="flex-1 w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
-            />
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch">
+            <div className="flex flex-col sm:flex-row gap-3 items-stretch flex-1">
+              <select
+                value={network}
+                onChange={(e) => setNetwork(e.target.value)}
+                className="px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base cursor-pointer appearance-none bg-no-repeat bg-right pr-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.5)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                  backgroundSize: '1.5rem',
+                  backgroundPosition: 'right 0.75rem center',
+                  minWidth: '140px'
+                }}
+              >
+                <option value="mainnet" className="bg-[#011829] text-white">Mainnet</option>
+                <option value="testnet" className="bg-[#011829] text-white">Testnet</option>
+                <option value="devnet" className="bg-[#011829] text-white">Devnet</option>
+              </select>
+              <input
+                type="text"
+                value={txHash}
+                onChange={(e) => setTxHash(e.target.value)}
+                placeholder="Enter transaction hash to visualize..."
+                className="flex-1 w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
+              />
+            </div>
             <button
               type="submit"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap"
+              className="w-full cursor-pointer sm:w-auto px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap"
             >
               Visualize
             </button>
@@ -59,7 +77,7 @@ const Hero = () => {
             Or{" "}
             <button
               type="button"
-              onClick={() => navigate('/graph/demo')}
+              onClick={() => navigate(`/graph/${network}/demo`)}
               className="text-sui-blue hover:text-sui-blue-dark underline transition-colors"
             >
               try a demo transaction

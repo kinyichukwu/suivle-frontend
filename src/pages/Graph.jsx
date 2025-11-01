@@ -7,8 +7,13 @@ import './Graph.css';
 const API_BASE_URL = 'https://suiflow-servers.fly.dev';
 
 export default function Graph() {
-  const { txHash } = useParams();
+  const params = useParams();
   const navigate = useNavigate();
+
+  // Handle both route formats: /graph/:network/:txHash and /graph/:txHash
+  const txHash = params.txHash || params.network;
+  const network = params.txHash ? params.network : 'mainnet'; // If txHash exists, network is first param, otherwise default to mainnet
+
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
   const [selectedNode, setSelectedNode] = useState(null);
@@ -38,7 +43,10 @@ export default function Graph() {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ digest: txHash }),
+            body: JSON.stringify({
+              digest: txHash,
+              network: network
+            }),
           });
 
           if (!response.ok) {
@@ -101,7 +109,7 @@ export default function Graph() {
       });
       setLoading(false);
     }
-  }, [txHash]);
+  }, [txHash, network]);
 
   // Generate graph nodes and edges from transaction data
   useEffect(() => {
@@ -597,6 +605,10 @@ export default function Graph() {
           >
             ← Home
           </button>
+          <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+            <span className="text-white/50 text-sm">Network:</span>
+            <span className="text-sui-blue font-semibold text-sm capitalize">{network}</span>
+          </div>
           <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
             <span className="text-white/50 text-sm">TX:</span>
             <span className="text-sui-blue font-mono text-sm font-semibold">{txHash?.substring(0, 8)}...{txHash?.substring(txHash.length - 6)}</span>
