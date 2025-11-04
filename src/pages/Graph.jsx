@@ -744,12 +744,12 @@ export default function Graph() {
         {/* Floating Action Button for New Transaction */}
         <button
           onClick={() => setShowTxInput(true)}
-          className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold shadow-2xl hover:shadow-xl hover:scale-110 transition-all z-50 flex items-center gap-2"
-          title="Analyze new transaction"
+          className="fixed top-24 right-6 px-5 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-xl font-semibold shadow-2xl hover:shadow-[#3DB3FC]/50 hover:scale-105 transition-all z-50 flex items-center gap-3"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
+          <span className="text-sm font-bold whitespace-nowrap">Analyze Transaction</span>
         </button>
 
         {/* Bottom Sheet for Node Details */}
@@ -964,59 +964,65 @@ export default function Graph() {
 
         {/* Transaction Input Popup */}
         {showTxInput && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center">
-            <div
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-              onClick={() => setShowTxInput(false)}
-            />
-            <div className="relative bg-sui-bg/95 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-white/30 max-w-2xl w-[90vw] z-10">
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[90] tx-form-overlay">
+            <div className="bg-sui-bg/95 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-white/30 max-w-2xl w-[90vw]">
               <button
                 onClick={() => setShowTxInput(false)}
-                className="absolute top-4 right-4 text-white/50 hover:text-white text-2xl"
+                className="absolute top-4 right-4 text-white/50 hover:text-white text-2xl leading-none"
               >
-                ✕
+                ×
               </button>
 
               <h2 className="text-white text-2xl sm:text-3xl font-bold mb-2 text-center">
-                Analyze New Transaction
+                Analyze a Transaction
               </h2>
               <p className="text-white/70 text-sm sm:text-base mb-6 text-center">
-                Enter a transaction hash or paste an explorer URL
+                Accepts a transaction digest (e.g., pasted hash or link).
               </p>
 
-              <form onSubmit={handleNewTransaction}>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-white/70 text-sm mb-2">Network</label>
+              <form onSubmit={handleNewTransaction} className="w-full max-w-2xl px-4">
+                <div className="flex flex-col sm:flex-row gap-3 items-stretch">
+                  <div className="flex flex-col sm:flex-row gap-3 items-stretch flex-1">
                     <select
                       value={newNetwork}
                       onChange={(e) => setNewNetwork(e.target.value)}
-                      className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white focus:outline-none focus:border-sui-blue transition-colors"
+                      className="px-6 py-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base cursor-pointer appearance-none bg-no-repeat bg-right pr-10"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.5)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                        backgroundSize: '1.5rem',
+                        backgroundPosition: 'right 0.75rem center',
+                        minWidth: '140px'
+                      }}
                     >
-                      <option value="mainnet">Mainnet</option>
-                      <option value="testnet">Testnet</option>
-                      <option value="devnet">Devnet</option>
+                      <option value="mainnet" className="bg-[#011829] text-white">Mainnet</option>
+                      <option value="testnet" className="bg-[#011829] text-white">Testnet</option>
+                      <option value="devnet" className="bg-[#011829] text-white">Devnet</option>
                     </select>
-                  </div>
-                  <div>
-                    <label className="block text-white/70 text-sm mb-2">Transaction Hash or URL</label>
                     <input
                       type="text"
                       value={newTxHash}
                       onChange={(e) => setNewTxHash(e.target.value)}
                       placeholder="Enter transaction hash or paste explorer URL..."
-                      className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-sui-blue transition-colors"
-                      required
+                      className="flex-1 w-full px-6 py-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-gradient-to-r from-sui-blue to-sui-blue-dark text-white rounded-md font-semibold hover:shadow-lg hover:shadow-sui-blue/30 transition-all"
+                    className="w-full cursor-pointer sm:w-auto px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap"
                   >
-                    Analyze Transaction
+                    Visualize
                   </button>
                 </div>
               </form>
+
+              <div className="mt-4 text-center">
+                <button
+                  onClick={() => navigate('/graph/demo')}
+                  className="text-sui-blue hover:text-sui-blue-dark text-sm underline"
+                >
+                  Or try a demo transaction
+                </button>
+              </div>
             </div>
           </div>
         )}
