@@ -39,7 +39,7 @@ const WeBuildSolutionsForWeb3 = () => {
         />
         <div className="max-w-[100rem] flex flex-col justify-center items-center md:flex-row lg:gap-[3rem] gap-10 sm:gap-4 lg:px-20">
           <div className="flex flex-col w-full">
-            <button className="bg-white/[0.1] rounded-full py-2 px-3 flex justify-center items-center text-white gap-3 w-fit tracking-widest font-light mb-6 flex-col">
+            <button className="bg-white/[0.1] rounded-lg py-2 px-3 flex justify-center items-center text-white gap-3 w-fit tracking-widest font-light mb-6 flex-col">
               OUR MISSION
             </button>
 
@@ -58,7 +58,7 @@ const WeBuildSolutionsForWeb3 = () => {
 
             <button
               onClick={() => setShowModal(true)}
-              className={`bg-white cursor-pointer shadow-lg rounded-full px-4 lg:px-6 py-2 flex justify-center
+              className={`bg-white cursor-pointer shadow-lg rounded-lg px-4 lg:px-6 py-2 flex justify-center
               items-center gap-2 w-fit transition-all z-10 hover:scale-105`}
             >
               <div
@@ -87,7 +87,7 @@ const WeBuildSolutionsForWeb3 = () => {
 
             {/* Modal */}
             <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[201] w-[90vw] max-w-2xl">
-              <div className="bg-[#011829]/95 backdrop-blur-xl p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/20">
+              <div className="bg-[#011829]/95 backdrop-blur-xl p-6 sm:p-8 rounded-xl shadow-2xl border border-white/20">
                 <button
                   onClick={() => setShowModal(false)}
                   className="absolute top-4 right-4 text-white/50 hover:text-white text-3xl leading-none transition-colors"
@@ -108,7 +108,7 @@ const WeBuildSolutionsForWeb3 = () => {
                       <select
                         value={network}
                         onChange={(e) => setNetwork(e.target.value)}
-                        className="px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base cursor-pointer appearance-none bg-no-repeat bg-right pr-10"
+                        className="px-6 py-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base cursor-pointer appearance-none bg-no-repeat bg-right pr-10"
                         style={{
                           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.5)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                           backgroundSize: '1.5rem',
@@ -125,12 +125,12 @@ const WeBuildSolutionsForWeb3 = () => {
                         value={txHash}
                         onChange={(e) => setTxHash(e.target.value)}
                         placeholder="Enter transaction hash or paste explorer URL..."
-                        className="flex-1 px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
+                        className="flex-1 px-6 py-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="w-full px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                      className="w-ful cursor-pointer px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all"
                     >
                       Visualize
                     </button>
@@ -144,7 +144,7 @@ const WeBuildSolutionsForWeb3 = () => {
                         navigate(`/graph/${network}/demo`);
                         setShowModal(false);
                       }}
-                      className="text-sui-blue hover:text-sui-blue-dark underline transition-colors"
+                      className="text-sui-blue cursor-pointer hover:text-sui-blue-dark underline transition-colors"
                     >
                       try a demo transaction
                     </button>

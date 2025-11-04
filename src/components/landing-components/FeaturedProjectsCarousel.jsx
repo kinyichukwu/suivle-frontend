@@ -12,7 +12,7 @@ const FeaturedProjectsCarousel = ({ next }) => {
     >
       <div
         onClick={() => navigate('/graph/demo')}
-        className="cursor-pointer min-w-[280px] sm:min-w-[420px] lg:min-w-[900px] h-[220px] sm:h-[330px] lg:h-[600px] bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] rounded-2xl lg:rounded-[3rem] flex flex-col justify-center items-center gap-6 sm:gap-12 overflow-hidden hover:scale-105 transition-transform"
+        className="cursor-pointer min-w-[280px] sm:min-w-[420px] lg:min-w-[900px] h-[220px] sm:h-[330px] lg:h-[600px] bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] rounded-xl lg:rounded-2xl flex flex-col justify-center items-center gap-6 sm:gap-12 overflow-hidden hover:scale-105 transition-transform"
       >
         <div className="text-white text-center px-6">
           <h3 className="text-2xl sm:text-4xl lg:text-6xl font-bold mb-4">
@@ -26,7 +26,7 @@ const FeaturedProjectsCarousel = ({ next }) => {
 
       <div
         onClick={() => navigate('/graph/demo')}
-        className="cursor-pointer h-[220px] sm:h-[330px] lg:h-[600px] aspect-square bg-gradient-to-br from-sui-blue to-sui-blue-dark flex justify-center items-center rounded-2xl lg:rounded-[3rem] hover:scale-105 transition-transform shadow-lg shadow-sui-blue/20"
+        className="cursor-pointer h-[220px] sm:h-[330px] lg:h-[600px] aspect-square bg-gradient-to-br from-sui-blue to-sui-blue-dark flex justify-center items-center rounded-xl lg:rounded-2xl hover:scale-105 transition-transform shadow-lg shadow-sui-blue/20"
       >
         <div className="text-white text-center px-6">
           <h3 className="text-xl sm:text-3xl lg:text-5xl font-bold mb-3">
@@ -40,7 +40,7 @@ const FeaturedProjectsCarousel = ({ next }) => {
 
       <div
         onClick={() => navigate('/graph/demo')}
-        className="cursor-pointer h-[220px] sm:h-[330px] lg:h-[600px] aspect-square bg-gradient-to-tr from-[#936BF9] to-sui-blue-dark flex justify-center items-center rounded-2xl lg:rounded-[3rem] hover:scale-105 transition-transform shadow-lg shadow-purple-500/20"
+        className="cursor-pointer h-[220px] sm:h-[330px] lg:h-[600px] aspect-square bg-gradient-to-tr from-[#936BF9] to-sui-blue-dark flex justify-center items-center rounded-xl lg:rounded-2xl hover:scale-105 transition-transform shadow-lg shadow-purple-500/20"
       >
         <div className="text-white text-center px-6">
           <h3 className="text-xl sm:text-3xl lg:text-5xl font-bold mb-3">

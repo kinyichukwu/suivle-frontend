@@ -31,7 +31,7 @@ export default function Home() {
       {/* Prominent Transaction Input Section */}
       {showForm && (
         <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[90] tx-form-overlay">
-          <div className="bg-sui-bg/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/30 max-w-2xl w-[90vw]">
+          <div className="bg-sui-bg/95 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-white/30 max-w-2xl w-[90vw]">
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-4 right-4 text-white/50 hover:text-white text-2xl"
@@ -53,11 +53,11 @@ export default function Home() {
                   value={txHash}
                   onChange={(e) => setTxHash(e.target.value)}
                   placeholder="Enter transaction hash or paste explorer URL..."
-                  className="tx-input flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-sui-blue transition-colors"
+                  className="tx-input flex-1 px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-sui-blue transition-colors"
                 />
                 <button
                   type="submit"
-                  className="submit-button px-6 py-3 bg-gradient-to-r from-sui-blue to-sui-blue-dark text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-sui-blue/30 transition-all"
+                  className="submit-button px-6 py-3 bg-gradient-to-r from-sui-blue to-sui-blue-dark text-white rounded-md font-semibold hover:shadow-lg hover:shadow-sui-blue/30 transition-all"
                 >
                   View Graph
                 </button>

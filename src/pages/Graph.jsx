@@ -628,15 +628,15 @@ export default function Graph() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/')}
-            className="px-6 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm"
+            className="px-6 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm"
           >
             ← Home
           </button>
-          <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+          <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
             <span className="text-white/50 text-sm">Network:</span>
             <span className="text-sui-blue font-semibold text-sm capitalize">{network}</span>
           </div>
-          <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+          <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
             <span className="text-white/50 text-sm">TX:</span>
             <span className="text-sui-blue font-mono text-sm font-semibold">{txHash?.substring(0, 8)}...{txHash?.substring(txHash.length - 6)}</span>
           </div>
@@ -689,51 +689,10 @@ export default function Graph() {
             <p className="text-white/70 mb-4">{error}</p>
             <button
               onClick={() => navigate('/')}
-              className="px-6 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+              className="px-6 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
             >
               Back to Home
             </button>
-          </div>
-        </div>
-      )}
-
-      {/* Stats Cards */}
-      {!loading && !error && transactionData && (
-        <div className="stats-container">
-          <div className="stat-card">
-            <div className="stat-icon" style={{background: 'linear-gradient(135deg, #3DB3FC, #5C80FA)'}}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-              </svg>
-            </div>
-            <div className="stat-content">
-              <div className="stat-label">Amount</div>
-              <div className="stat-value">{calculateTotalAmount()} SUI</div>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon" style={{background: 'linear-gradient(135deg, #936BF9, #5C80FA)'}}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <div className="stat-content">
-              <div className="stat-label">Nodes</div>
-              <div className="stat-value">{nodes.length}</div>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon" style={{background: 'linear-gradient(135deg, #4da2ff, #3DB3FC)'}}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div className="stat-content">
-              <div className="stat-label">Connections</div>
-              <div className="stat-value">{edges.length}</div>
-            </div>
           </div>
         </div>
       )}
@@ -976,7 +935,7 @@ export default function Graph() {
                   : `https://suiscan.xyz/mainnet/object/${selectedNode.data.details.package}`;
                 window.open(explorerUrl, '_blank');
               }}
-              className="mt-4 w-full px-4 py-3 bg-gradient-to-r from-[#3DB3FC] to-[#5C80FA] text-white rounded-xl font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all"
+              className="mt-4 w-full px-4 py-3 bg-gradient-to-r from-[#3DB3FC] to-[#5C80FA] text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all"
             >
               View on SuiScan Explorer →
             </button>
