@@ -1,0 +1,173 @@
+/* Bottom Sheet Overlay */
+.bottom-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Bottom Sheet Content */
+.bottom-sheet-content {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  max-height: 85vh;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: none;
+  border-radius: 24px 24px 0 0;
+  padding: 0;
+  z-index: 201;
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(100%);
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Handle at the top of the sheet */
+.bottom-sheet-handle {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 0.75rem;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.bottom-sheet-handle:active {
+  cursor: grabbing;
+}
+
+.bottom-sheet-handle-bar {
+  width: 48px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.bottom-sheet-handle:hover .bottom-sheet-handle-bar {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Sheet Header */
+.bottom-sheet-header {
+  padding: 0 1.75rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.bottom-sheet-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+/* Sheet Body */
+.bottom-sheet-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1.75rem;
+}
+
+.bottom-sheet-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bottom-sheet-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.bottom-sheet-body::-webkit-scrollbar-thumb {
+  background: rgba(77, 162, 255, 0.4);
+  border-radius: 4px;
+}
+
+.bottom-sheet-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(77, 162, 255, 0.6);
+}
+
+/* Sheet Footer */
+.bottom-sheet-footer {
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+/* Detail Items inside Bottom Sheet */
+.bottom-sheet-body .detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 1rem;
+  min-height: 2.5rem;
+}
+
+.bottom-sheet-body .detail-item:last-child {
+  border-bottom: none;
+}
+
+.bottom-sheet-body .detail-label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+.bottom-sheet-body .detail-value {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bottom-sheet-content {
+    max-height: 90vh;
+  }
+
+  .bottom-sheet-header {
+    padding: 0 1.25rem 1rem;
+  }
+
+  .bottom-sheet-body {
+    padding: 1.25rem;
+  }
+
+  .bottom-sheet-footer {
+    padding: 1rem 1.25rem;
+  }
+}

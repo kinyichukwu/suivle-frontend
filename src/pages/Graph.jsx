@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, Background, Controls, MiniMap } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import './Graph.css';
+import { BottomSheet } from '../components/BottomSheet';
+import { extractTransactionHash } from '../utils';
 
 const API_BASE_URL = 'https://suivle-servers.fly.dev';
 
@@ -23,6 +25,9 @@ export default function Graph() {
   const [copiedAddress, setCopiedAddress] = useState(null);
   const [suiPrice, setSuiPrice] = useState(null);
   const [priceLoading, setPriceLoading] = useState(true);
+  const [showTxInput, setShowTxInput] = useState(false);
+  const [newTxHash, setNewTxHash] = useState('');
+  const [newNetwork, setNewNetwork] = useState('mainnet');
 
   // Copy to clipboard function
   const copyToClipboard = (text) => {
@@ -614,6 +619,16 @@ export default function Graph() {
     setSelectedNode(node);
   }, []);
 
+  const handleNewTransaction = (e) => {
+    e.preventDefault();
+    const extractedHash = extractTransactionHash(newTxHash);
+    if (extractedHash) {
+      navigate(`/graph/${newNetwork}/${extractedHash}`);
+      setShowTxInput(false);
+      setNewTxHash('');
+    }
+  };
+
   return (
     <div className="graph-container">
       {/* Background decorative elements matching home page */}
@@ -726,21 +741,25 @@ export default function Graph() {
           />
         </ReactFlow>
 
-        {/* Node Details Panel */}
-        {selectedNode && (
-          <div className="node-details-panel">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-white font-bold text-lg capitalize">{selectedNode.data.type} Details</h3>
-              <button
-                onClick={() => setSelectedNode(null)}
-                className="text-white/50 hover:text-white transition-colors text-xl leading-none"
-              >
-                ✕
-              </button>
-            </div>
+        {/* Floating Action Button for New Transaction */}
+        <button
+          onClick={() => setShowTxInput(true)}
+          className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-full font-semibold shadow-2xl hover:shadow-xl hover:scale-110 transition-all z-50 flex items-center gap-2"
+          title="Analyze new transaction"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          </svg>
+        </button>
 
+        {/* Bottom Sheet for Node Details */}
+        <BottomSheet open={!!selectedNode} onOpenChange={(open) => !open && setSelectedNode(null)}>
+          <div className="bottom-sheet-header">
+            <h3 className="bottom-sheet-title">{selectedNode?.data.type} Details</h3>
+          </div>
+          <div className="bottom-sheet-body">
             {/* Transaction Node Details */}
-            {selectedNode.data.type === 'transaction' && selectedNode.data.details && (
+            {selectedNode?.data.type === 'transaction' && selectedNode.data.details && (
               <div className="space-y-4">
                 {selectedNode.data.details.summary && (
                   <div className="bg-white/5 rounded-lg p-3 border border-white/10">
@@ -840,7 +859,7 @@ export default function Graph() {
             )}
 
             {/* Address Node Details */}
-            {selectedNode.data.type === 'address' && selectedNode.data.details && (
+            {selectedNode?.data.type === 'address' && selectedNode.data.details && (
               <div className="space-y-3">
                 <div className="detail-item">
                   <span className="detail-label">Role:</span>
@@ -882,7 +901,7 @@ export default function Graph() {
             )}
 
             {/* Contract Node Details */}
-            {selectedNode.data.type === 'contract' && selectedNode.data.details && (
+            {selectedNode?.data.type === 'contract' && selectedNode.data.details && (
               <div className="space-y-3">
                 <div className="detail-item">
                   <span className="detail-label">Package:</span>
@@ -925,20 +944,80 @@ export default function Graph() {
                 )}
               </div>
             )}
-
+          </div>
+          <div className="bottom-sheet-footer">
             <button
               onClick={() => {
-                const explorerUrl = selectedNode.data.type === 'transaction'
+                const explorerUrl = selectedNode?.data.type === 'transaction'
                   ? `https://suiscan.xyz/mainnet/tx/${transactionData?.transactionDigest}`
-                  : selectedNode.data.type === 'address'
-                  ? `https://suiscan.xyz/mainnet/account/${selectedNode.data.details.address}`
-                  : `https://suiscan.xyz/mainnet/object/${selectedNode.data.details.package}`;
+                  : selectedNode?.data.type === 'address'
+                  ? `https://suiscan.xyz/mainnet/account/${selectedNode?.data.details.address}`
+                  : `https://suiscan.xyz/mainnet/object/${selectedNode?.data.details.package}`;
                 window.open(explorerUrl, '_blank');
               }}
-              className="mt-4 w-full px-4 py-3 bg-gradient-to-r from-[#3DB3FC] to-[#5C80FA] text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all"
+              className="w-full px-4 py-3 bg-gradient-to-r from-[#3DB3FC] to-[#5C80FA] text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all"
             >
               View on SuiScan Explorer →
             </button>
+          </div>
+        </BottomSheet>
+
+        {/* Transaction Input Popup */}
+        {showTxInput && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center">
+            <div
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setShowTxInput(false)}
+            />
+            <div className="relative bg-sui-bg/95 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-white/30 max-w-2xl w-[90vw] z-10">
+              <button
+                onClick={() => setShowTxInput(false)}
+                className="absolute top-4 right-4 text-white/50 hover:text-white text-2xl"
+              >
+                ✕
+              </button>
+
+              <h2 className="text-white text-2xl sm:text-3xl font-bold mb-2 text-center">
+                Analyze New Transaction
+              </h2>
+              <p className="text-white/70 text-sm sm:text-base mb-6 text-center">
+                Enter a transaction hash or paste an explorer URL
+              </p>
+
+              <form onSubmit={handleNewTransaction}>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-white/70 text-sm mb-2">Network</label>
+                    <select
+                      value={newNetwork}
+                      onChange={(e) => setNewNetwork(e.target.value)}
+                      className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white focus:outline-none focus:border-sui-blue transition-colors"
+                    >
+                      <option value="mainnet">Mainnet</option>
+                      <option value="testnet">Testnet</option>
+                      <option value="devnet">Devnet</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-white/70 text-sm mb-2">Transaction Hash or URL</label>
+                    <input
+                      type="text"
+                      value={newTxHash}
+                      onChange={(e) => setNewTxHash(e.target.value)}
+                      placeholder="Enter transaction hash or paste explorer URL..."
+                      className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-sui-blue transition-colors"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 bg-gradient-to-r from-sui-blue to-sui-blue-dark text-white rounded-md font-semibold hover:shadow-lg hover:shadow-sui-blue/30 transition-all"
+                  >
+                    Analyze Transaction
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         )}
         </div>

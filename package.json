@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
     "@xyflow/react": "^12.9.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
