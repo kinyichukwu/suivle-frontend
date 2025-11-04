@@ -1,6 +1,7 @@
 import Transition from "../transitions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { extractTransactionHash } from "../../utils";
 import worlddextop from "../../../assets/landing-page/WeBuildSolutionsForWeb3/WorldDextop.png";
 import worldTablet from "../../../assets/landing-page/WeBuildSolutionsForWeb3/World.svg";
 import imageGroup from "../../../assets/landing-page/WeBuildSolutionsForWeb3/groupImageDextop.svg";
@@ -13,8 +14,9 @@ const WeBuildSolutionsForWeb3 = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (txHash.trim()) {
-      navigate(`/graph/${network}/${txHash.trim()}`);
+    const extractedHash = extractTransactionHash(txHash);
+    if (extractedHash) {
+      navigate(`/graph/${network}/${extractedHash}`);
       setShowModal(false);
     } else {
       navigate(`/graph/${network}/demo`);
@@ -97,7 +99,7 @@ const WeBuildSolutionsForWeb3 = () => {
                   Visualize Transaction
                 </h2>
                 <p className="text-white/70 text-sm sm:text-base mb-6 text-center">
-                  Select network and enter transaction hash
+                  Select network and enter transaction hash or paste explorer URL
                 </p>
 
                 <form onSubmit={handleSearch}>
@@ -122,7 +124,7 @@ const WeBuildSolutionsForWeb3 = () => {
                         type="text"
                         value={txHash}
                         onChange={(e) => setTxHash(e.target.value)}
-                        placeholder="Enter transaction hash..."
+                        placeholder="Enter transaction hash or paste explorer URL..."
                         className="flex-1 px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
                       />
                     </div>

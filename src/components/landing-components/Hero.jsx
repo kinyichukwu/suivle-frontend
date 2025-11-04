@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { extractTransactionHash } from "../../utils";
 import zigzag from "../../../assets/landing-page/Zigzag.png";
 import zigzag2 from "../../../assets/landing-page/Zigzag2.png";
 
@@ -10,8 +11,9 @@ const Hero = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (txHash.trim()) {
-      navigate(`/graph/${network}/${txHash.trim()}`);
+    const extractedHash = extractTransactionHash(txHash);
+    if (extractedHash) {
+      navigate(`/graph/${network}/${extractedHash}`);
     } else {
       navigate(`/graph/${network}/demo`);
     }
@@ -62,7 +64,7 @@ const Hero = () => {
                 type="text"
                 value={txHash}
                 onChange={(e) => setTxHash(e.target.value)}
-                placeholder="Enter transaction hash to visualize..."
+                placeholder="Enter transaction hash or paste explorer URL..."
                 className="flex-1 w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-sui-blue focus:bg-white/15 transition-all text-sm lg:text-base"
               />
             </div>

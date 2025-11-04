@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { extractTransactionHash } from '../utils';
 import { Navbar } from '../components/navbar/Navbar';
 import Hero from '../components/landing-components/Hero';
 import OurProcess from '../components/landing-components/OurProcess';
@@ -16,8 +17,9 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (txHash.trim()) {
-      navigate(`/graph/${txHash.trim()}`);
+    const extractedHash = extractTransactionHash(txHash);
+    if (extractedHash) {
+      navigate(`/graph/${extractedHash}`);
     }
   };
 
@@ -41,7 +43,7 @@ export default function Home() {
               Analyze a Transaction
             </h2>
             <p className="text-white/70 text-sm sm:text-base mb-6 text-center">
-              Enter a Sui transaction hash to visualize its flow
+              Accepts a transaction digest (e.g., pasted hash or link).
             </p>
 
             <form onSubmit={handleSubmit} className="tx-form">
@@ -50,7 +52,7 @@ export default function Home() {
                   type="text"
                   value={txHash}
                   onChange={(e) => setTxHash(e.target.value)}
-                  placeholder="Enter transaction hash..."
+                  placeholder="Enter transaction hash or paste explorer URL..."
                   className="tx-input flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-sui-blue transition-colors"
                 />
                 <button
