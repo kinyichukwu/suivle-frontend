@@ -70,7 +70,7 @@ const Hero = () => {
             </div>
             <button
               type="submit"
-              className="w-full cursor-pointer sm:w-auto px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap"
+              className="w-full cursor-pointer sm:w-auto px-8 py-4 bg-[#4da2ff] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 hover:scale-105 transition-all whitespace-nowrap"
             >
               Visualize
             </button>
@@ -80,7 +80,7 @@ const Hero = () => {
             <button
               type="button"
               onClick={() => navigate(`/graph/${network}/demo`)}
-              className="text-sui-blue hover:text-sui-blue-dark underline transition-colors"
+              className="text-[#4da2ff] hover:text-[#3d8fef] underline transition-colors"
             >
               try a demo transaction
             </button>

@@ -19,7 +19,7 @@ export function GradientButton({
         className={`${className} shadow-lg rounded-lg flex justify-center items-center text-white gap-2 w-fit transition-all
       ${
         gradient
-          ? "bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9]"
+          ? "bg-[#4da2ff] hover:bg-[#3d8fef] shadow-[#4da2ff]/30 hover:shadow-[#4da2ff]/50"
           : "border"
       }
       ${!hover && "hover:shadow-2xl"}
@@ -38,7 +38,7 @@ export function GradientButton({
       </button>
       {hover && (
         <div
-          className={`w-[10rem] absolute scale-150 top-0 opacity-0 transition-all duration-1000 ease-in-out h-[3rem] translate-y-8 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] blur-2xl rounded-lg -z-10 ${
+          className={`w-[10rem] absolute scale-150 top-0 opacity-0 transition-all duration-1000 ease-in-out h-[3rem] translate-y-8 bg-[#4da2ff] blur-2xl rounded-lg -z-10 ${
             hoverPic && "opacity-100"
           }`}
         />

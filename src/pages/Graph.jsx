@@ -160,12 +160,12 @@ export default function Graph() {
         details: transactionData
       },
       style: {
-        background: 'linear-gradient(135deg, #3DB3FC 0%, #5C80FA 50%, #936BF9 100%)',
+        background: '#4da2ff',
         color: '#ffffff',
         borderRadius: '20px',
         padding: '18px 24px',
         border: '1px solid rgba(255, 255, 255, 0.3)',
-        boxShadow: '0 12px 40px rgba(61, 179, 252, 0.4), 0 0 20px rgba(93, 128, 250, 0.2)',
+        boxShadow: '0 12px 40px rgba(77, 162, 255, 0.4), 0 0 20px rgba(77, 162, 255, 0.2)',
         fontWeight: '700',
         fontSize: '13px',
         width: '200px',
@@ -422,12 +422,12 @@ export default function Graph() {
             }
           },
           style: {
-            background: 'linear-gradient(135deg, #3DB3FC 0%, #5C80FA 50%, #936BF9 100%)',
+            background: '#4da2ff',
             color: '#ffffff',
             borderRadius: '20px',
             padding: '20px 28px',
             border: '1px solid rgba(255, 255, 255, 0.3)',
-            boxShadow: '0 12px 40px rgba(61, 179, 252, 0.4), 0 0 20px rgba(93, 128, 250, 0.2)',
+            boxShadow: '0 12px 40px rgba(77, 162, 255, 0.4), 0 0 20px rgba(77, 162, 255, 0.2)',
             fontWeight: '700',
             fontSize: '14px',
             minWidth: '180px',
@@ -643,7 +643,7 @@ export default function Graph() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/')}
-            className="px-6 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm"
+            className="px-6 py-3 bg-[#4da2ff] text-white rounded-lg font-semibold shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 hover:scale-105 transition-all text-sm"
           >
             ← Home
           </button>
@@ -704,7 +704,7 @@ export default function Graph() {
             <p className="text-white/70 mb-4">{error}</p>
             <button
               onClick={() => navigate('/')}
-              className="px-6 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+              className="px-6 py-3 bg-[#4da2ff] text-white rounded-lg font-semibold shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 hover:scale-105 transition-all"
             >
               Back to Home
             </button>
@@ -744,7 +744,7 @@ export default function Graph() {
         {/* Floating Action Button for New Transaction */}
         <button
           onClick={() => setShowTxInput(true)}
-          className="fixed top-24 right-6 px-5 py-3 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-xl font-semibold shadow-2xl hover:shadow-[#3DB3FC]/50 hover:scale-105 transition-all z-50 flex items-center gap-3"
+          className="fixed top-24 right-6 px-5 py-3 cursor-pointer text-white rounded-xl font-semibold shadow-lg shadow-[#4da2ff]/30 bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4d65ff]/50 hover:scale-105 transition-all z-50 flex items-center gap-3"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -955,7 +955,7 @@ export default function Graph() {
                   : `https://suiscan.xyz/mainnet/object/${selectedNode?.data.details.package}`;
                 window.open(explorerUrl, '_blank');
               }}
-              className="w-full px-4 py-3 bg-gradient-to-r from-[#3DB3FC] to-[#5C80FA] text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all"
+              className="w-full px-4 py-3 bg-[#4da2ff] text-white rounded-lg font-semibold text-sm hover:bg-[#3d8fef] hover:shadow-lg hover:shadow-[#4da2ff]/30 hover:scale-105 transition-all"
             >
               View on SuiScan Explorer →
             </button>
@@ -1008,7 +1008,7 @@ export default function Graph() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full cursor-pointer sm:w-auto px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap"
+                    className="w-full cursor-pointer sm:w-auto px-8 py-4 bg-[#4da2ff] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 hover:scale-105 transition-all whitespace-nowrap"
                   >
                     Visualize
                   </button>
@@ -1018,7 +1018,7 @@ export default function Graph() {
               <div className="mt-4 text-center">
                 <button
                   onClick={() => navigate('/graph/demo')}
-                  className="text-sui-blue hover:text-sui-blue-dark text-sm underline"
+                  className="text-[#4da2ff] hover:text-[#3d8fef] text-sm underline transition-colors"
                 >
                   Or try a demo transaction
                 </button>
