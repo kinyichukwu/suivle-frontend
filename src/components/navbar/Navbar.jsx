@@ -53,7 +53,7 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8 text-white text-sm lg:text-base">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8 text-white text-sm lg:text-base font-bold">
             <Link to="/" className="hover:text-sui-blue transition-colors">
               Home
             </Link>
@@ -111,21 +111,21 @@ export const Navbar = () => {
               <Link
                 to="/"
                 onClick={() => setMenuOpen(false)}
-                className="text-white hover:text-sui-blue transition-colors py-4 text-lg font-medium border-b border-white/10 hover:border-sui-blue/30"
+                className="text-white hover:text-sui-blue transition-colors py-4 text-lg font-bold border-b border-white/10 hover:border-sui-blue/30"
               >
                 Home
               </Link>
               <Link
                 to="/graph/demo"
                 onClick={() => setMenuOpen(false)}
-                className="text-white hover:text-sui-blue transition-colors py-4 text-lg font-medium border-b border-white/10 hover:border-sui-blue/30"
+                className="text-white hover:text-sui-blue transition-colors py-4 text-lg font-bold border-b border-white/10 hover:border-sui-blue/30"
               >
                 Demo
               </Link>
               <Link
                 to="/docs"
                 onClick={() => setMenuOpen(false)}
-                className="text-white hover:text-sui-blue transition-colors py-4 text-lg font-medium border-b border-white/10 hover:border-sui-blue/30"
+                className="text-white hover:text-sui-blue transition-colors py-4 text-lg font-bold border-b border-white/10 hover:border-sui-blue/30"
               >
                 Documentation
               </Link>

@@ -67,7 +67,7 @@ export default function Docs() {
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
           <a
             href="#getting-started"
-            className="px-8 py-4 bg-gradient-to-r from-sui-blue to-sui-blue-dark text-white rounded-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-center"
+            className="px-8 py-4 bg-[#4da2ff] text-white rounded-lg font-semibold shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 hover:scale-105 transition-all text-center"
           >
             Get Started
           </a>
@@ -106,7 +106,7 @@ export default function Docs() {
                 <p className="text-white/70 mb-6 leading-relaxed">{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="px-8 py-4 bg-gradient-to-r from-sui-blue to-sui-blue-dark text-white rounded-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                  className="px-8 py-4 bg-[#4da2ff] text-white rounded-lg font-semibold shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 hover:scale-105 transition-all"
                 >
                   Try Again
                 </button>
