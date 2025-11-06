@@ -130,7 +130,7 @@ const WeBuildSolutionsForWeb3 = () => {
                     </div>
                     <button
                       type="submit"
-                      className="w-ful cursor-pointer px-8 py-4 bg-gradient-to-r from-[#3DB3FC] via-[#5C80FA] to-[#936BF9] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                      className="w-ful cursor-pointer px-8 py-4 bg-[#4da2ff] text-white rounded-lg font-semibold text-sm lg:text-base shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 hover:scale-105 transition-all"
                     >
                       Visualize
                     </button>
@@ -144,7 +144,7 @@ const WeBuildSolutionsForWeb3 = () => {
                         navigate(`/graph/${network}/demo`);
                         setShowModal(false);
                       }}
-                      className="text-sui-blue cursor-pointer hover:text-sui-blue-dark underline transition-colors"
+                      className="text-[#4da2ff] cursor-pointer hover:text-[#3d8fef] underline transition-colors"
                     >
                       try a demo transaction
                     </button>

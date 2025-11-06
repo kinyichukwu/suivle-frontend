@@ -57,7 +57,7 @@ export default function Home() {
                 />
                 <button
                   type="submit"
-                  className="submit-button px-6 py-3 bg-gradient-to-r from-sui-blue to-sui-blue-dark text-white rounded-md font-semibold hover:shadow-lg hover:shadow-sui-blue/30 transition-all"
+                  className="submit-button px-6 py-3 bg-[#4da2ff] text-white rounded-md font-semibold shadow-lg shadow-[#4da2ff]/30 hover:bg-[#3d8fef] hover:shadow-xl hover:shadow-[#4da2ff]/50 transition-all"
                 >
                   View Graph
                 </button>
@@ -67,7 +67,7 @@ export default function Home() {
             <div className="mt-4 text-center">
               <button
                 onClick={() => navigate('/graph/demo')}
-                className="text-sui-blue hover:text-sui-blue-dark text-sm underline"
+                className="text-[#4da2ff] hover:text-[#3d8fef] text-sm underline transition-colors"
               >
                 Or try a demo transaction
               </button>
